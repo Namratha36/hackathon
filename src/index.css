@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-hospital-50: #f0f9ff;
+  --color-hospital-100: #e0f2fe;
+  --color-hospital-200: #bae6fd;
+  --color-hospital-300: #7dd3fc;
+  --color-hospital-400: #38bdf8;
+  --color-hospital-500: #0ea5e9;
+  --color-hospital-600: #0284c7;
+  --color-hospital-700: #0369a1;
+  --color-hospital-800: #075985;
+  --color-hospital-900: #0c4a6e;
+
+  --color-emergency-500: #ef4444;
+  --color-emergency-600: #dc2626;
+
+  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-premium: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --animate-pulse-gentle: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer components {
+  .glass-card {
+    background-color: rgb(255 255 255 / 0.8);
+    backdrop-filter: blur(12px);
+    border-width: 1px;
+    border-color: rgb(255 255 255 / 0.2);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 bg-hospital-600 text-white rounded-lg transition-all duration-200 shadow-sm active:scale-95 flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-white text-hospital-700 border border-hospital-200 rounded-lg transition-all duration-200 shadow-sm active:scale-95 flex items-center gap-2;
+
+    &:hover {
+      @apply bg-hospital-50;
+    }
+  }
+
+  .badge {
+    @apply px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider;
+  }
+
+  .badge-pending {
+    @apply bg-amber-100 text-amber-700 border border-amber-200;
+  }
+
+  .badge-progress {
+    @apply bg-blue-100 text-blue-700 border border-blue-200;
+  }
+
+  .badge-success {
+    @apply bg-emerald-100 text-emerald-700 border border-emerald-200;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 rounded-full;
+
+  &:hover {
+    @apply bg-slate-300;
+  }
+}
+
+/* Animations */
+.slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
